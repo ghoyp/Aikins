@@ -1,0 +1,19 @@
+ol {
+    font-weight: bold;
+}
+
+th, td {
+    border: 1px solid black;
+    border-radius: 10px;
+    border-color: blueviolet
+}
+th {
+    text-align: center; 
+}
+
+td:nth-child(even) {
+    background-color: greenyellow
+}
+tr:hover {
+    background-color: brown;
+}

@@ -1,0 +1,27 @@
+
+header{
+    font-size: 100px;
+    color: black;
+    text-align: center;
+    font-family: monospace;
+}
+.augusta{
+    background-color: navajowhite;
+    font-family: monospace;
+    color:black
+}
+nav{
+    text-align:center;
+    font-family: monospace;
+    font-size: 25px;
+
+}
+a:hover{
+    color:seagreen
+}
+a:active, a:visited {
+    color:maroon;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
