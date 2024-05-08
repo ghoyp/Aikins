@@ -61,6 +61,11 @@ table, th, td {
     
 }
 
+table{
+    display:inline-block;
+    margin-right: 15px;
+}
+
 th, td {
     padding: 15px;
 }
