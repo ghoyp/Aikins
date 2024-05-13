@@ -16,17 +16,25 @@
         <a href="augusta.html">Augusta</a>
         <a href ="atlanta.html">Atlanta</a>
         <a href = "explore.html">Explore</a>
+        <a href = "macon.html">Macon</a>
        </nav>
        <div>
         <aside>
          <caption>Cities ranked by population</caption>
-         <li>
-             <ol>Atlanta</ol>
-             <ol>Augusta</ol> 
-             <ol>Macon</ol>
-         </li>
+         <ol>
+             <li>Atlanta</li>
+             <li>Augusta</li> 
+             <li>Macon</li>
+         </ol>
          <a href = "explore.html">Join Our Mailing List!</a><br>
          <a href="https://www.roadtrips.com/professional-golf-packages/masters/schedule/" target="_blank">Masters Golf Tournament Info</a>
+         <menu>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="augusta.html">Augusta</a></li>
+            <li><a href="atlanta.html">Atlanta</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href = "macon.html">Macon</a></li>
+         </menu>
         </aside>
         </div>
     <br>
@@ -42,14 +50,36 @@
 
         <form style="text-align: center;">
             <label for="fname">First Name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
+            <input type="text" id="fname" name="fname" placeholder="First Name"><br>
+
             <label for="lname">Last Name:</label><br>
-            <input type="text" id="lname" name="lname"><br>
+            <input type="text" id="lname" name="lname" placeholder="Last Name"><br>
+
             <label for="email">Email:</label><br>
-            <input type="email" id="emailaddress" name="emailaddress"><br>
-            <label for="email" id="emailaddress" name="emailaddress">Verify Email:</label><br>
-            <input type="email"><br>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required><br>
+
+            <label for="confirm_email" name="confirm_email">Confirm Email:</label><br>
+            <input type="email" id="confirm_email" name="confirm_email" placeholder="Verify email address" oninput="checkEmailMatch()"><br>
+
             <label for="comments">Have questions? Submit them here:</label><br>
-            <textarea id="question" name="question" rows="4" cols="35"></textarea><br>
+
+            <span id="email-match-error" style="color:red;font-weight: bolder;"></span><br><br>
+
+            <textarea id="question" name="question" rows="4" cols="35" placeholder="enter questions here"></textarea><br>
             <input type="submit" value="Submit">
+
         </form>
+
+        <script>
+            function checkEmailMatch() {
+                var email = document.getElementById("email").value;
+                var confirmEmail = document.getElementById("confirm_email").value;
+                var errorSpan = document.getElementById("email-match-error");
+
+                if (email !== confirmEmail) {
+                    errorSpan.textContent = "Emails do not match.";
+                } else {
+                    errorSpan.textContent="";
+                }
+                }
+        </script>
