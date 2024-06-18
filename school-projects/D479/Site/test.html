@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Test Tanini</title>
+    <style>
+        .floating-box {
+            position: fixed;
+            top: 100px; /* Adjust as needed */
+            right: 20px; /* Adjust as needed */
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar bg-body-tertiary navbar-expand-lg py-1 center">
+        <div class="container">
+            <a href="#" class="nav-bar pt-1">
+                <img src="island.svg" alt="picture of beach" width="80" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About Tanini</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#accomodations" class="nav-link">Accommodations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#activities" class="nav-link">Activities</a>
+                    </li>
+                    <li class="nav-item"><a href="#hotspots" class="nav-link">Hotspots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Introduction -->
+    <section class="bg-dark text-light p-5 pg-lg-0 pt-lg5 text-center text-sm-start">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <div>
+                    <h1>Welcome to <span style="color:#B8EA91">Tanini</span></h1>
+                    <p class="lead my-4">
+                        Where there's something to do for everybody.
+                    </p>
+                    <button class="btn btn-lg" style=" color: #B8EA91; border-color: #B8EA91;">Explore</button>
+                </div>
+                <img src="summer.svg" alt="" class="img-fluid w-50 d-none d-sm-block pt-5">
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Scrolling Section -->
+    <section class="p-5 bg-light">
+        <div class="container">
+            <div class="scroll-container">
+                <div class="scroll-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt beatae repudiandae consequuntur quia dicta, reprehenderit autem distinctio nemo architecto sit.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section IDs -->
+    <section id="section1" class="p-5 bg-body-dark">
+        <div class="container">
+            <h2 style="color: #B8EA91">Accommodations</h2>
+            <p>Discover the ultimate comfort on our island with a wide range of accommodations to suit every traveler. Whether you're arriving via direct flights or connecting routes, you'll find luxurious hotels and cozy beachfront bungalows to make your stay memorable. For those who prefer more independence, our selection of vacation rentals offers the perfect home-away-from-home experience.</p>
+            <a href="accommodations.html" class="btn btn-primary" style="background-color: #B8EA91; border-color: #B8EA91;">Learn More</a>
+        </div>
+    </section>
+    
+    <section id="section2" class="p-5 bg-light" style="text-align: right;">
+        <div class="container">
+            <h2 style="color: #B8EA91">Activities</h2>
+            <p>Explore a plethora of exciting activities on our island paradise. From thrilling surfboarding sessions along pristine coastlines to serene hikes through lush rainforests, there's something for every adventurer. Dive into snorkeling, indulge in local cuisine tours, or simply relax on sun-kissed beaches—our island offers endless opportunities for unforgettable experiences.</p>
+            <a href="activities.html" class="btn btn-primary" style="background-color: #B8EA91; border-color: #B8EA91;">Learn More</a>
+        </div>
+    </section>
+    <section id="section3" class="p-5">
+        <div class="container">
+            <h2 style="color: #B8EA91">Hotspots</h2>
+            <p>Experience the vibrant hotspots of our island, where you can savor delectable dishes at top-rated restaurants and sip cocktails at sunset lounges with stunning ocean views. Explore bustling local markets, join lively beachfront bars, or relax in cozy cafes—the perfect places to connect with fellow travelers and island locals alike.</p>
+            <a href="hotspots.html" class="btn btn-primary" style="background-color: #B8EA91; border-color: #B8EA91;">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Floating List Group -->
+    <div class="floating-box" id="floatingBox">
+        <button class="btn btn-secondary btn-sm" id="toggleFloatingList">Toggle List</button>
+        <ul class="list-group">
+            <a href="#section1" class="list-group-item list-group-item-action active" aria-current="true">
+                Accommodations
+            </a>
+            <a href="#section2" class="list-group-item list-group-item-action">Activities</a>
+            <a href="#section3" class="list-group-item list-group-item-action">Hotspots</a>
+        </ul>
+    </div>
+
+    <!-- JavaScript for Active Link and Toggle List -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.list-group-item');
+            const toggleButton = document.getElementById('toggleFloatingList');
+            const floatingBox = document.getElementById('floatingBox');
+
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    links.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            toggleButton.addEventListener('click', function() {
+                floatingBox.classList.toggle('collapsed');
+            });
+        });
+    </script>
+
+    <!-- Optional: Include jQuery and Bootstrap for ease of use -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

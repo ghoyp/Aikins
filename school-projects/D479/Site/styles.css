@@ -1,0 +1,36 @@
+.floating-box {
+    position: fixed;
+    top: 100px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+.floating-box.collapsed {
+    transform: translateX(100%);
+}
+.floating-box .toggle-button {
+    display: none;
+}
+.floating-box.collapsed .toggle-button {
+    display: block;
+}
+.floating-box .list-group {
+    display: block;
+}
+.floating-box.collapsed .list-group {
+    display: none;
+}
+.scroll-container {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+.scroll-text {
+    display: inline-block;
+    padding: 0% 10px;
+    animation: marquee 10s linear infinite;
+}
+@keyframes marquee {
+    0% {transform: translateX(100%);}
+    100% {transform: translateX(-100%);}
+}
