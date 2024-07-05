@@ -172,39 +172,54 @@
             flightButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const flightPrice = roundTrip ? 500 : 250;
-                    const numUsers = 1; // Adjust this as necessary
-                    const totalFlightPrice = flightPrice * numUsers;
-                    document.getElementById('checkout-content').innerHTML += `
-                        <p>Flight with ${this.parentElement.querySelector('.card-title').innerText}: $${totalFlightPrice}</p>
+                    const flightDetails = `
+                        <div>
+                            <p>Flight: ${button.closest('.card-body').querySelector('.card-title').textContent}</p>
+                            <p>Price: $${flightPrice}</p>
+                        </div>
                     `;
-                    updateTotalPrice(totalFlightPrice);
+                    document.getElementById('checkout-content').innerHTML += flightDetails;
+                    updateTotalPrice(flightPrice);
                 });
             });
         });
 
-        document.getElementById('add-hotel').addEventListener('click', function() {
-            const hotelType = document.getElementById('hotel-type');
-            const numNights = document.getElementById('num-nights').value;
-            const hotelPrice = parseInt(hotelType.value) * numNights;
-            document.getElementById('checkout-content').innerHTML += `
-                <p>${hotelType.options[hotelType.selectedIndex].text}: $${hotelPrice}</p>
-            `;
-            updateTotalPrice(hotelPrice);
-        });
-
-        function calculateArrivalTime(departureTime, duration) {
-            const [hours, minutes] = departureTime.split(':').map(Number);
-            const arrivalDate = new Date();
-            arrivalDate.setHours(hours + duration, minutes);
-            return arrivalDate.toTimeString().substring(0, 5);
+        function calculateArrivalTime(preferredTime, flightDuration) {
+            const [hours, minutes] = preferredTime.split(':').map(Number);
+            const arrivalTime = new Date();
+            arrivalTime.setHours(hours + flightDuration, minutes);
+            return arrivalTime.toTimeString().slice(0, 5);
         }
 
         function updateTotalPrice(price) {
             const totalPriceElement = document.getElementById('total-price');
-            const currentTotal = parseInt(totalPriceElement.innerText.replace('Total Price: $', ''));
-            const newTotal = currentTotal + price;
-            totalPriceElement.innerText = `Total Price: $${newTotal}`;
+            const currentPrice = parseInt(totalPriceElement.textContent.replace('Total Price: $', ''), 10);
+            const newPrice = currentPrice + price;
+            totalPriceElement.textContent = `Total Price: $${newPrice}`;
         }
+
+        document.getElementById('add-hotel').addEventListener('click', function() {
+            const hotelTypeSelect = document.getElementById('hotel-type');
+            const hotelPrice = parseInt(hotelTypeSelect.value, 10);
+            const hotelName = hotelTypeSelect.options[hotelTypeSelect.selectedIndex].textContent;
+            const numNights = parseInt(document.getElementById('num-nights').value, 10);
+            const hotelCost = hotelPrice * numNights;
+
+            const hotelDetails = `
+                <div>
+                    <p>Hotel: ${hotelName}</p>
+                    <p>Price for ${numNights} nights: $${hotelCost}</p>
+                </div>
+            `;
+            document.getElementById('checkout-content').innerHTML += hotelDetails;
+            updateTotalPrice(hotelCost);
+        });
+
+        document.getElementById('submit-reservation').addEventListener('click', function() {
+            const confirmationNumber = Math.floor(Math.random() * 1000000) + 1;
+            alert(`Thank you for your reservation! Your confirmation number is: ${confirmationNumber}`);
+            location.reload();
+        });
     </script>
 </body>
 </html>
